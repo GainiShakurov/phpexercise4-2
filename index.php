@@ -31,9 +31,9 @@
 <form method="POST" style="float: left; margin: 0 0 20px;">
     <label for="sort">Сортировать по:</label>
     <select name="sort_by">
-        <option value="date_added" <?php if ($_POST['sort_by'] == 'date_added') {echo "selected";} ?> >Дате добавления</option>
-        <option value="is_done" <?php if ($_POST['sort_by'] == 'is_done') {echo "selected";} ?> >Статусу</option>
-        <option value="description" <?php if ($_POST['sort_by'] == 'description') {echo "selected";} ?> >Описанию</option>
+        <option value="date_added" <?php if (!empty($_POST['sort_by']) && $_POST['sort_by'] == 'date_added') {echo "selected";} ?> >Дате добавления</option>
+        <option value="is_done" <?php if (!empty($_POST['sort_by']) && $_POST['sort_by'] == 'is_done') {echo "selected";} ?> >Статусу</option>
+        <option value="description" <?php if (!empty($_POST['sort_by']) && $_POST['sort_by'] == 'description') {echo "selected";} ?> >Описанию</option>
     </select>
     <input name="sort" value="Отсортировать" type="submit">
 </form>
@@ -98,7 +98,7 @@ if (isset($_GET['action']) && ($_GET['action'] === "done") && isset($_GET['id'])
         echo '<td>' . $data['date_added'] . '</td>';
         echo '<td>' . $data['is_done'] . '</td>';
         echo '<td>';
-        echo '<a href="/edit.php?id=' . $data['id'] . '">Изменить</a> ';
+        echo '<a href="edit.php?id=' . $data['id'] . '">Изменить</a> ';
         echo '<a href="/index.php?id=' . $data['id'] . '&action=done">Выполнить</a> ';
         echo '<a href="/index.php?id=' . $data['id'] . '&action=delete">Удалить</a> ';
         echo '</td>';
