@@ -8,7 +8,7 @@ if (isset($_POST['description']) && !empty($_POST['description'])) {
     $currentUpdate->bindValue(':is_done', $_POST['status'], PDO::PARAM_INT);
     $currentUpdate->bindValue(':description', $_POST['description'], PDO::PARAM_STR);
     $currentUpdate->execute();
-    header('Location: /');
+    header('Location: index.php');
 }
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
